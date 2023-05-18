@@ -1,4 +1,5 @@
 import React from 'react';
+import TopNavigationBar from './components/TopNavigationBar';
 
 import PhotoListItem from './components/PhotoListItem';
 import PhotoList from './components/PhotoList';
@@ -10,7 +11,8 @@ import TopicList from './components/TopicList';
 // Note: Rendering a single component to build components in isolation
 const App = () => (
   <div className="App">
-    <TopicList/>
+    <TopNavigationBar />
+    
     {/* {Array.from(Array(3)).map((_, index) => <TopicListItem key={index}/>)} */}
    
     {/* <TopicListItem/> */}
