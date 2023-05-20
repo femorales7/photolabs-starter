@@ -23,6 +23,7 @@
       "react-app/jest"
     ]
   },
+  
   "browserslist": {
     "production": [
       ">0.2%",
@@ -37,5 +38,6 @@
   },
   "devDependencies": {
     "sass": "^1.62.1"
-  }
+  },
+  "proxy": "http://localhost:8001"
 }

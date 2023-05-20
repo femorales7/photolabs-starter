@@ -1,6 +1,6 @@
 import React from "react";
 import PhotoList from "../components/PhotoList";
-import HomeRoute from "../components/HomeRoute";
+import HomeRoute from "./HomeRoute";
 
 
 import "../styles/PhotoDetailsModal.scss";
@@ -58,7 +58,7 @@ import "../styles/PhotoDetailsModal.scss";
         toggleFavourite={toggleFavourite}
         handleModale={handleModale}
       />
-      <div className="photo-details-modal--header">Similar Photos</div>
+      <div className="photo-details-modal--header">Related Photos</div>
       <PhotoList
         photo-details-modal--images
         photos={similarPhotos}

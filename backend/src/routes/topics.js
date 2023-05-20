@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const topicsMock = require("../mocks/topics.json");
 const photosMock = require("../mocks/photos.json");
+// const db = require("../db/index")
 
-module.exports = db => {
+module.exports = (db) => {
   router.get("/topics", (request, response) => {
     db.query(`
       SELECT 
