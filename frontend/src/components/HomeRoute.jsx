@@ -3,6 +3,7 @@ import TopNavigationBar from "./TopNavigationBar";
 import PhotoList from "./PhotoList";
 import useApplicationData from "../hooks/useApplicationData";
 
+
 const HomeRoute = ({ photos, topics, handleModale , favorites, toggleFavourite }) => {
  
 

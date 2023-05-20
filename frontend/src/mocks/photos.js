@@ -6,7 +6,8 @@ const photo1 = {
   },
   "urls": {
     "full": `${process.env.PUBLIC_URL}/Image-1-Full.jpeg`,
-    "regular": `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`
+    "regular": `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
+    "small": `${process.env.PUBLIC_URL}/Image-1-small.jpeg`
   },
   "user": {
     "id": "1",
@@ -83,7 +84,7 @@ const photo5 = {
   },
   "user": {
     "id": "5",
-    "username": "exampleuser",
+    "username": "exampleuser5",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -101,7 +102,7 @@ const photo6 =  {
   },
   "user": {
     "id": "6",
-    "username": "exampleuser",
+    "username": "exampleuser6",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -119,7 +120,7 @@ const photo7 = {
   },
   "user": {
     "id": "7",
-    "username": "exampleuser",
+    "username": "exampleuser7",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }

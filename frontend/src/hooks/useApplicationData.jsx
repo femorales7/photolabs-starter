@@ -1,34 +1,74 @@
-import { useState, useEffect } from 'react';
+
+import { useReducer, useEffect } from 'react';
+
+export const ACTIONS = {
+  SET_MODAL_OPEN: 'SET_MODAL_OPEN',
+  SET_SELECTED_PHOTO: 'SET_SELECTED_PHOTO',
+  TOGGLE_FAVOURITE: 'TOGGLE_FAVOURITE'
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FAV_PHOTO_ADDED':
+      return {
+        ...state,
+        favorites: [...state.favorites, action.photoId]
+      };
+    case 'FAV_PHOTO_REMOVED':
+      return {
+        ...state,
+        favorites: state.favorites.filter(id => id !== action.photoId)
+      };
+    case ACTIONS.SET_MODAL_OPEN:
+      return {
+        ...state,
+        isModalOpen: action.payload
+      };
+    case ACTIONS.SET_SELECTED_PHOTO:
+      return {
+        ...state,
+        selectedPhoto: action.payload
+      };
+ 
+    default:
+      throw new Error(`Unsupported action type: ${action.type}`);
+  }
+}
 
 export default function useApplicationData() {
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [favorites, setFavorites] = useState([]);
-
-  const handleModale = (photo) => {
-    setSelectedPhoto(photo);
-    setIsModalOpen(true);
+  const initialState = {
+    isModalOpen: false,
+    selectedPhoto: null,
+    favorites: []
   };
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const toggleFavourite = (photoId) => {
-    if (favorites.includes(photoId)) {
-      setFavorites(favorites.filter((id) => id !== photoId));
+    if (state.favorites.includes(photoId)) {
+      dispatch({ type: 'FAV_PHOTO_REMOVED', photoId });
     } else {
-      setFavorites([...favorites, photoId]);
+      dispatch({ type: 'FAV_PHOTO_ADDED', photoId });
     }
   };
 
+  const handleModale = (photo) => {
+    dispatch({ type: ACTIONS.SET_SELECTED_PHOTO, payload: photo });
+    dispatch({ type: ACTIONS.SET_MODAL_OPEN, payload: true });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: ACTIONS.SET_MODAL_OPEN, payload: false });
+  };
+
+
+
   return {
-    isModalOpen,
-    selectedPhoto,
+    isModalOpen: state.isModalOpen,
+    selectedPhoto: state.selectedPhoto,
     handleModale,
     closeModal,
     toggleFavourite,
-    favorites
-  }
-
+    favorites: state.favorites
+  };
 }
