@@ -3,12 +3,16 @@
   flex-wrap: wrap;
   justify-content: space-between;
   list-style-type: none;
+  border-radius: 8px;
   margin: 0;
   padding: 0;
+  background-color: #F5F5F5;
 }
 
 .photo-list:after {
   content: "";
   flex: 0 1 30%;
   margin: 5px;
+  border-radius: 8px;
 }
+

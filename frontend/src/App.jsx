@@ -1,26 +1,37 @@
-import React from 'react';
-import TopNavigationBar from './components/TopNavigationBar';
+import React, { useState } from "react";
 
-import PhotoListItem from './components/PhotoListItem';
-import PhotoList from './components/PhotoList';
-import TopicListItem from './components/TopicListItem';
+import HomeRoute from "./components/HomeRoute";
+import PhotoDetailsModal from "./routes/PhotoDetailsModal";
+import useAplicationData from "./hooks/useApplicationData";
+import photos from "./mocks/photos.js";
+import topics from "./mocks/topics.js";
 
-import './App.scss';
-import TopicList from './components/TopicList';
+import "./App.scss";
 
 // Note: Rendering a single component to build components in isolation
-const App = () => (
-  <div className="App">
-    <TopNavigationBar />
-    
-    {/* {Array.from(Array(3)).map((_, index) => <TopicListItem key={index}/>)} */}
-   
-    {/* <TopicListItem/> */}
-    {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index}/>) } */}
-    {/* <PhotoListItem/> */}
-    <PhotoList/>
-   
-  </div>
-)
+const App = () => {
+const {isModalOpen, selectedPhoto, handleModale, closeModal, toggleFavourite, favorites} = useAplicationData();
 
-export default App
+  return (
+    <div className="App">
+      <HomeRoute
+        photos={photos}
+        topics={topics}
+        handleModale={handleModale}
+        favorites={favorites}
+        toggleFavourite={toggleFavourite}
+      />
+      {isModalOpen && (
+        <PhotoDetailsModal
+          selectedPhoto={selectedPhoto}
+          closeModal={closeModal}
+          handleModale={handleModale}
+          favorites={favorites}
+          toggleFavourite={toggleFavourite}
+        />
+      )}
+    </div>
+  );
+};
+
+export default App;

@@ -1,12 +1,13 @@
 .photo-list--item {
   display: flex;
   margin: 24px;
-  padding: 8px;
+  padding: 16px;
   border-width: 0.5px;
   border-color: lightgray;
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
+  background-color: #FFFFFF ;
 }
 
 .photo-list--image {

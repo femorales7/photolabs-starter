@@ -1,23 +1,44 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = (props) => {
+const PhotoListItem = ({
+  id,
+  username,
+  imageSource,
+  isFavourite,
+  toggleFavourite,
+  handleModale,
+}) => {
+  console.log("im in photolistItme");
   /* Insert React */
-  
   return (
     <div className="photo-list--item">
-      
       <div>
-      <PhotoFavButton/>
-        <img src={props.imageSource} alt="Photo" />
-        
-      </div>
-      <div>
-        <h2>username: {props.username}</h2>
-        <h2>id: {props.id}</h2>
-        <h2>Hide Username: {props.hideUserName}</h2>
+        <PhotoFavButton
+          isFavourite={isFavourite}
+          toggleFavourite={() => toggleFavourite(id)}
+        />
+
+        <img
+          className="photo-list--image"
+          src={imageSource}
+          alt="Photo"
+          onClick={handleModale}
+        />
+        <div className="photo-list--user-details">
+          <img
+            className="photo-list--user-profile"
+            src={imageSource}
+            alt="Photo"
+            onClick={handleModale}
+          />
+          <h1 className=" photo-list--user-info ">
+            {username}
+          </h1>
+          {/* <h1>{id}</h1> */}
+        </div>
       </div>
     </div>
   );

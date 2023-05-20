@@ -1,7 +1,8 @@
 .top-nav-bar--topic-list {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: end;
+  padding-left: 100px;
   align-items: center;
   margin-right: 24px;
 }

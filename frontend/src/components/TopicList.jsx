@@ -3,34 +3,25 @@ import React from "react";
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
-const TopicList = (props) => {
-  const mapTopics = props.topics.map((topics) => {
+const TopicList = ({topics}) => {
+  console.log(topics)
+
+  const mapTopics =topics.map((topic) => {
+    const {title, id} = topic;
+   
+    
     return <TopicListItem 
-    key={topics.id}
-    id={topics.id}
-    label = {topics.label}
-    link= {topics.link} />;
+    key={id}
+    id={id}
+    label = {title}
+    // link= {link} 
+    />;
   });
-  return <div className="top-nav-bar--topic-list">{mapTopics}</div>;
+  return <div className="top-nav-bar--topic-list">
+    {mapTopics}
+    
+    </div>;
 };
 
-TopicList.defaultProps = {
-  topics: [
-    {
-      id: 1,
-      label: "Nature",
-      link: "link placeholder",
-    },
-    {
-      id: 2,
-      label: "Food",
-      link: "link placeholder",
-    },
-    {
-      id: 3,
-      label: "People",
-      link: "link placeholder",
-    },
-  ],
-};
+
 export default TopicList;
