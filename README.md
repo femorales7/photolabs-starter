@@ -1,7 +1,9 @@
 # react-photolabs
-The PhotoLabs project for the Web Development React course programming.
+The PhotoLabs project is the application for displaying different photos from the postgress database and the frontend processes were developed in React.
 
 # Photolabs
+!["Main Page"](https://github.com/femorales7/photolabs-starter/blob/main/frontend/public/PhotoLab1.PNG)
+!["Modal Frame"](https://github.com/femorales7/photolabs-starter/blob/main/frontend/public/PhotoLab2.PNG)
 
 ## Setup
 
