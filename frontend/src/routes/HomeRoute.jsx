@@ -9,10 +9,13 @@ const HomeRoute = ({
   handleModale,
   favorites,
   toggleFavourite,
+  handleSearch
 }) => {
+  
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} favouriteCount={favorites.length} />
+
+      <TopNavigationBar topics={topics} favouriteCount={favorites.length} handleSearch={handleSearch}/>
       <PhotoList
         photos={photos}
         favouritePhotos={favorites}
