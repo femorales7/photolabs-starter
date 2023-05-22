@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import useAplicationData from "./hooks/useApplicationData";
@@ -8,10 +8,11 @@ import "./App.scss";
 const App = () => {
   const [photos, setPhotos] = useState([]);
   const [topics, setTopics] = useState([]);
-  console.log('photos',photos);
+  
 
   useEffect(() => {
     fetch("/api/photos")
+    
       .then(response => response.json())
       .then(data => setPhotos(data))
       .catch(error => console.error(error));
@@ -42,7 +43,7 @@ const App = () => {
     toggleFavourite,
     favorites,
   } = useAplicationData();
-  console.log('photos',photos);
+ 
   return (
     <div className="App">
       <HomeRoute
@@ -52,6 +53,7 @@ const App = () => {
         favorites={favorites}
         toggleFavourite={toggleFavourite}
         onTopicClick={handleTopicClick}
+        isModalOpen={isModalOpen}
       />
       {isModalOpen && (
         <PhotoDetailsModal
@@ -60,6 +62,7 @@ const App = () => {
           handleModale={handleModale}
           favorites={favorites}
           toggleFavourite={toggleFavourite}
+          isModalOpen={isModalOpen}
         />
       )}
     </div>

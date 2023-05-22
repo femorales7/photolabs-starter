@@ -2,19 +2,20 @@ import React from "react";
 import PhotoList from "../components/PhotoList";
 import HomeRoute from "./HomeRoute";
 
-
 import "../styles/PhotoDetailsModal.scss";
 
- const PhotoDetailsModal = ({
+const PhotoDetailsModal = ({
   closeModal,
-  selectedPhoto,  
+  selectedPhoto,
   handleModale,
   favorites,
-  toggleFavourite
+  toggleFavourite,
 }) => {
- 
-  console.log("this select photo", selectedPhoto);
   const similarPhotos = Object.values(selectedPhoto.similar_photos);
+  
+ 
+  
+
 
   return (
     <div className="photo-details-modal">
@@ -52,7 +53,7 @@ import "../styles/PhotoDetailsModal.scss";
       </button>
 
       <PhotoList
-        className="photo-details-modal--image"
+        classNamePhotoListItem = "photo-list-modal--image"
         photos={[selectedPhoto]}
         favouritePhotos={favorites}
         toggleFavourite={toggleFavourite}
@@ -60,7 +61,7 @@ import "../styles/PhotoDetailsModal.scss";
       />
       <div className="photo-details-modal--header">Related Photos</div>
       <PhotoList
-        photo-details-modal--images
+        classNamePhotoListItem="photo-list--image "
         photos={similarPhotos}
         favouritePhotos={favorites}
         toggleFavourite={toggleFavourite}

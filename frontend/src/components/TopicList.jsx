@@ -4,8 +4,7 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 const TopicList = ({topics}) => {
-  console.log(topics)
-
+  
   const mapTopics =topics.map((topic) => {
     const {title, id} = topic;
    

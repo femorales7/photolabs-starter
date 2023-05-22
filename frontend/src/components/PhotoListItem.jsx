@@ -10,11 +10,13 @@ const PhotoListItem = ({
   isFavourite,
   toggleFavourite,
   handleModale,
-  photoProfile
+  photoProfile,
+  classNamePhotoListItem,
 }) => {
-  console.log("Photo Profile", photoProfile);
   /* Insert React */
-
+  if (classNamePhotoListItem !== "photo-list-modal--image") {
+    classNamePhotoListItem = "photo-list--image ";
+  }
   return (
     <div className="photo-list--item">
       <div>
@@ -24,7 +26,7 @@ const PhotoListItem = ({
         />
 
         <img
-          className="photo-list--image"
+          className={classNamePhotoListItem}
           src={imageSource}
           alt="Photo"
           onClick={handleModale}
@@ -34,11 +36,8 @@ const PhotoListItem = ({
             className="photo-list--user-profile"
             src={photoProfile}
             alt="Photo"
-           
           />
-          <h1 className=" photo-list--user-info ">
-            {username}
-          </h1>
+          <h1 className=" photo-list--user-info ">{username}</h1>
           {/* <h1>{id}</h1> */}
         </div>
       </div>

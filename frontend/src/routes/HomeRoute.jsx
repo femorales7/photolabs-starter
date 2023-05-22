@@ -5,7 +5,6 @@ import useApplicationData from "../hooks/useApplicationData";
 
 
 const HomeRoute = ({ photos, topics, handleModale , favorites, toggleFavourite }) => {
- 
 
   return (
     <div className="home-route">
@@ -14,10 +13,12 @@ const HomeRoute = ({ photos, topics, handleModale , favorites, toggleFavourite }
         favouriteCount={favorites.length}
       />
       <PhotoList
+        
         photos={photos}
         favouritePhotos={favorites}
         toggleFavourite={toggleFavourite}
         handleModale={handleModale}
+        
       />
     </div>
   );
