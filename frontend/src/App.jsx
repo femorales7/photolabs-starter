@@ -8,31 +8,29 @@ import "./App.scss";
 const App = () => {
   const [photos, setPhotos] = useState([]);
   const [topics, setTopics] = useState([]);
-  
 
   useEffect(() => {
     fetch("/api/photos")
-    
-      .then(response => response.json())
-      .then(data => setPhotos(data))
-      .catch(error => console.error(error));
+      .then((response) => response.json())
+      .then((data) => setPhotos(data))
+      .catch((error) => console.error(error));
   }, []);
 
   useEffect(() => {
     fetch("/api/topics")
-      .then(response => response.json())
-      .then(data => setTopics(data))
-      .catch(error => console.error(error));
+      .then((response) => response.json())
+      .then((data) => setTopics(data))
+      .catch((error) => console.error(error));
   }, []);
 
   const handleTopicClick = (topicId) => {
     fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         // Update the photos state with the fetched data for the specific topic
         setPhotos(data);
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   };
 
   const {
@@ -43,7 +41,7 @@ const App = () => {
     toggleFavourite,
     favorites,
   } = useAplicationData();
- 
+
   return (
     <div className="App">
       <HomeRoute

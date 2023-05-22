@@ -12,10 +12,6 @@ const PhotoDetailsModal = ({
   toggleFavourite,
 }) => {
   const similarPhotos = Object.values(selectedPhoto.similar_photos);
-  
- 
-  
-
 
   return (
     <div className="photo-details-modal">
@@ -51,9 +47,9 @@ const PhotoDetailsModal = ({
           </defs>
         </svg>
       </button>
-
+      {/* sent especific className for each part of the modal frame */}
       <PhotoList
-        classNamePhotoListItem = "photo-list-modal--image"
+        classNamePhotoListItem="photo-list-modal--image"
         photos={[selectedPhoto]}
         favouritePhotos={favorites}
         toggleFavourite={toggleFavourite}
@@ -65,7 +61,6 @@ const PhotoDetailsModal = ({
         photos={similarPhotos}
         favouritePhotos={favorites}
         toggleFavourite={toggleFavourite}
-        handleModale={handleModale}
       />
     </div>
   );

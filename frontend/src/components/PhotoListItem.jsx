@@ -14,6 +14,7 @@ const PhotoListItem = ({
   classNamePhotoListItem,
 }) => {
   /* Insert React */
+  /* Apply default class name if not provided */
   if (classNamePhotoListItem !== "photo-list-modal--image") {
     classNamePhotoListItem = "photo-list--image ";
   }
@@ -38,13 +39,12 @@ const PhotoListItem = ({
             alt="Photo"
           />
           <h1 className=" photo-list--user-info ">{username}</h1>
-          {/* <h1>{id}</h1> */}
         </div>
       </div>
     </div>
   );
 };
-
+// Set default props
 PhotoListItem.defaultProps = {
   username: "Jacob",
   imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
