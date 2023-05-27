@@ -28,6 +28,27 @@ const reducer = (state, action) => {
         ...state,
         selectedPhoto: action.payload,
       };
+    case "ACTIONS.SET_PHOTO_DATA":
+      return {
+        ...state,
+        photoData: action.photoData,
+      };
+    case "ACTIONS.SET_TOPIC_DATA":
+      return {
+        ...state,
+        topicData: action.topicData,
+      };
+    case ACTIONS.SELECT_PHOTO:
+      return {
+        ...state,
+        selectedPhoto: action.photo,
+      };
+
+    case ACTIONS.DISPLAY_PHOTO_DETAILS:
+      return {
+        ...state,
+        isPhotoDetailsDisplayed: true,
+      };
 
     default:
       throw new Error(`Unsupported action type: ${action.type}`);
@@ -39,9 +60,11 @@ export default function useApplicationData() {
     isModalOpen: false,
     selectedPhoto: null,
     favorites: [],
+    photoData: [],
+    topicData: [],
   };
 
-   // Use reducer hook to manage state
+  // Use reducer hook to manage state
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -61,7 +84,29 @@ export default function useApplicationData() {
   const closeModal = () => {
     dispatch({ type: ACTIONS.SET_MODAL_OPEN, payload: false });
   };
-// Return the necessary data and functions
+
+  useEffect(() => {
+    // Fetch initial photo data
+    fetch("/api/photos")
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: "ACTIONS.SET_PHOTO_DATA", photoData: data });
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    // Fetch initial topic data
+    fetch("/api/topics")
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: "ACTIONS.SET_TOPIC_DATA", topicData: data });
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  // Return the necessary data and functions
+
   return {
     isModalOpen: state.isModalOpen,
     selectedPhoto: state.selectedPhoto,
@@ -69,5 +114,7 @@ export default function useApplicationData() {
     closeModal,
     toggleFavourite,
     favorites: state.favorites,
+    photoData: state.photoData,
+    topicData: state.topicData,
   };
 }

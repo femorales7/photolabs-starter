@@ -10,12 +10,10 @@ const PhotoList = ({
   handleModale,
   classNamePhotoListItem,
 }) => {
-  
   // make a map of photos objet
 
   const mapPhotos = photos.map((photo) => {
-    const { id, user, urls } = photo;
-
+    const { id, user, urls, location } = photo;
 
     return (
       <PhotoListItem
@@ -29,10 +27,11 @@ const PhotoList = ({
         toggleFavourite={toggleFavourite}
         handleModale={() => handleModale(photo)}
         classNamePhotoListItem={classNamePhotoListItem}
+        location={location}
       />
     );
   });
- // Render the list of photos with corresponding data
+  // Render the list of photos with corresponding data
   return <ul className="photo-list">{mapPhotos}</ul>;
 };
 

@@ -6,6 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = ({
   id,
   username,
+  location,
   imageSource,
   isFavourite,
   toggleFavourite,
@@ -15,6 +16,7 @@ const PhotoListItem = ({
 }) => {
   /* Insert React */
   /* Apply default class name if not provided */
+
   if (classNamePhotoListItem !== "photo-list-modal--image") {
     classNamePhotoListItem = "photo-list--image ";
   }
@@ -38,7 +40,12 @@ const PhotoListItem = ({
             src={photoProfile}
             alt="Photo"
           />
-          <h1 className=" photo-list--user-info ">{username}</h1>
+          <div className="photo-list--user-details_letters">
+            <h1 className=" photo-list--user-info ">{username}</h1>
+            <h1 className="photo-list--user-location ">
+              {location.city}, {location.country}
+            </h1>
+          </div>
         </div>
       </div>
     </div>

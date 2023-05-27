@@ -1,34 +1,38 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
-import useAplicationData from "./hooks/useApplicationData";
+import useApplicationData from "./hooks/useApplicationData";
 import SearchBar from "./components/SearchBar";
 
 import "./App.scss";
 
 const App = () => {
+  const {
+    isModalOpen,
+    selectedPhoto,
+    handleModale,
+    closeModal,
+    toggleFavourite,
+    favorites,
+    photoData,
+    topicData,
+  } = useApplicationData();
+
   const [photos, setPhotos] = useState([]);
   const [topics, setTopics] = useState([]);
   const [filteredPhotos, setFilteredPhotos] = useState([]);
 
   useEffect(() => {
-    fetch("/api/photos")
-      .then((response) => response.json())
-      .then((data) => {
-        setPhotos(data);
-        setFilteredPhotos(data);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+    setPhotos(photoData);
+    setFilteredPhotos(photoData);
+  }, [photoData]);
 
   useEffect(() => {
-    fetch("/api/topics")
-      .then((response) => response.json())
-      .then((data) => setTopics(data))
-      .catch((error) => console.error(error));
-  }, []);
+    setTopics(topicData);
+  }, [topicData]);
 
   const handleTopicClick = (topicId) => {
+    console.log("topicId", topicId)
     fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
       .then((response) => response.json())
       .then((data) => {
@@ -38,15 +42,6 @@ const App = () => {
       })
       .catch((error) => console.error(error));
   };
-
-  const {
-    isModalOpen,
-    selectedPhoto,
-    handleModale,
-    closeModal,
-    toggleFavourite,
-    favorites,
-  } = useAplicationData();
 
   const handleSearch = (searchTerm) => {
     const filtered = photos.filter((photo) => {
@@ -62,7 +57,6 @@ const App = () => {
 
   return (
     <div className="App">
-      
       <HomeRoute
         photos={filteredPhotos}
         topics={topics}
