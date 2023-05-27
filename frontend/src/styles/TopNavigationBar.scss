@@ -19,6 +19,10 @@
   color: #111;
   text-underline-position: auto;
   margin-left: 24px;
+  cursor: pointer;
+}
+.top-nav-bar--logo:hover {
+  text-decoration: underline;
 }
 .searchBox {
   // position: absolute;

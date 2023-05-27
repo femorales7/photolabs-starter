@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../styles/TopNavigationBar.scss";
+
 import FavBadge from "./FavBadge";
 import TopicList from "./TopicList";
 import SearchBar from "./SearchBar";
@@ -10,9 +11,12 @@ const TopNavigation = ({
   handleSearch,
   onTopicClick,
 }) => {
+  const redirect = () => {
+    window.location.href = "http://localhost:3000/"; // Redirect to the desired URL
+  };
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar--logo">PhotoLabs</span>
+      <span href="/" onClick={redirect} className="top-nav-bar--logo">PhotoLabs</span>
       <SearchBar onSearch={handleSearch} />
       <TopicList topics={topics} onTopicClick={onTopicClick} />
 
